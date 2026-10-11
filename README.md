@@ -48,7 +48,7 @@ private let weakDelegate = Mutex(WeakDelegate())
 npx skills add zghanw/Swift-Evolution-Agent-Skill
 ```
 
-This works for Claude Code, Codex, Cursor and the other agents the [`skills`](https://github.com/vercel-labs/skills) CLI supports. To install by hand, copy `skills/swift-evolution/` into `~/.claude/skills/` (Claude Code) or `~/.agents/skills/` (Codex and others).
+The [`skills`](https://github.com/vercel-labs/skills) CLI installs it for more than 50 agents, including Claude Code, Codex, Cursor and Windsurf. To install by hand, copy `skills/swift-evolution/` into your agent's skills folder: `~/.claude/skills/` for Claude Code, `~/.agents/skills/` for Codex, Cursor and most others.
 
 ## What's inside
 
