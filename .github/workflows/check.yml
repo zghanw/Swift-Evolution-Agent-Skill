@@ -1,0 +1,46 @@
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Only on PRs that touch generated output or the generator, so upstream feed changes
+      # between weekly syncs don't fail unrelated PRs.
+      - name: Generated references match the sources
+        if: github.event_name == 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --name-only "origin/${{ github.base_ref }}...HEAD" | grep -qE '^(skills/swift-evolution/references/|scripts/sync\.mjs)'; then
+            node scripts/sync.mjs --check
+          else
+            echo "No changes to generated references or scripts/sync.mjs; skipping."
+          fi
+
+      - name: Hand-written SE citations match the references
+        run: node scripts/validate.mjs
+      - name: Validator self-test
+        run: node scripts/validate.test.mjs
+
+      - name: Type-check Swift snippets with Swift 6.4
+        run: |
+          node scripts/snippets.mjs .snippets
+          if ls .snippets/*.swift >/dev/null 2>&1; then
+            docker run --rm -v "$PWD/.snippets:/s" -w /s swift:6.4 \
+              sh -c 'fail=0; for f in *.swift; do echo "== $f"; swiftc -typecheck "$f" || fail=1; done; exit $fail'
+          fi

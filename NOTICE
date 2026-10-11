@@ -1,0 +1,21 @@
+Swift Evolution Agent Skill
+Copyright 2026 zghanw (https://github.com/zghanw)
+
+The generated files under references/ contain material from the following
+projects, used under the Apache License, Version 2.0. Copyright Apple Inc. and
+the Swift project authors.
+
+- Swift Evolution (https://github.com/swiftlang/swift-evolution):
+  proposal titles, summaries and status, from
+  https://download.swift.org/swift-evolution/v1/evolution.json
+- Swift (https://github.com/swiftlang/swift):
+  upcoming feature flag names and language modes, from
+  include/swift/Basic/Features.def
+- swift.org website (https://github.com/swiftlang/swift-org-website):
+  Swift release dates, tags and Xcode versions, from
+  _data/builds/swift_releases.yml
+
+scripts/sync.mjs generates these files; they are not edited by hand.
+
+Swift and Xcode are trademarks of Apple Inc. This project is not affiliated
+with or endorsed by Apple Inc. or the Swift project.
