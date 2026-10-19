@@ -2,7 +2,7 @@
 
 An agent skill that stops AI coding agents from guessing which Swift features your toolchain has.
 
-<!-- sync:stamp -->Synced from Swift Evolution [`01180b6`](https://github.com/swiftlang/swift-evolution/commit/01180b65b4b9c1122d4a349170059d299a03a5f8), latest release: Swift 6.4.0 (2026-09-14)<!-- /sync:stamp -->
+<!-- sync:stamp -->Synced from Swift Evolution [`f006bf3`](https://github.com/swiftlang/swift-evolution/commit/f006bf3cf2594bdd4a972f9126f93bd1743ed524), latest release: Swift 6.4.1 (2026-10-12)<!-- /sync:stamp -->
 
 [![check](https://github.com/zghanw/Swift-Evolution-Agent-Skill/actions/workflows/check.yml/badge.svg)](https://github.com/zghanw/Swift-Evolution-Agent-Skill/actions/workflows/check.yml)
 [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
