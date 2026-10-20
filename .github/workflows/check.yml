@@ -20,9 +20,10 @@ jobs:
           node-version: 22
 
       # Only on PRs that touch generated output or the generator, so upstream feed changes
-      # between weekly syncs don't fail unrelated PRs.
+      # between weekly syncs don't fail unrelated PRs. Skipped on the sync PR itself: the sync
+      # job just generated it, and the feed may have moved on since.
       - name: Generated references match the sources
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.head_ref != 'sync/swift-evolution'
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
